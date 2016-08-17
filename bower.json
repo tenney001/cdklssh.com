@@ -1,0 +1,25 @@
+{
+  "name": "cdkls.com",
+  "description": "cdkls website rewrite by nodejs",
+  "main": "",
+  "authors": [
+    "Tenney <270078781@qq.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "website"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "normalize.css#4.1.1",
+    "moment": "2.9.0"
+  }
+}

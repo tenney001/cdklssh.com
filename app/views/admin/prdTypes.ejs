@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <% include inc/meta.ejs %>
+
+        <title><%= title %></title>
+
+        <% include inc/headerlink.ejs %>
+    </head>
+    <body>
+        <% include inc/nav.ejs %>
+        
+        <div class="container">
+            <a class="btn btn-primary" href="/admin/prdType/add">添加分类</a>
+
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>分类名称</th>
+                    <th>添加时间</th>
+                    <th>修改时间</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(item in productTypes){%>
+                  <tr>
+                    <td><%=productTypes[item].name%></td>
+                    <td><%=moment(productTypes[item].meta.createAt)%></td>
+                    <td><%=moment(productTypes[item].meta.updateAt)%></td>
+                    <td>
+                        <a class="btn btn-warning btn-xs" href="/admin/prdType/update/<%=productTypes[item]._id%>">修改</a>
+                        <a class="btn btn-danger btn-xs" href="/admin/prdType/del/<%=productTypes[item]._id%>" onclick="if(!confirm('确认要删除？')){return false;}">删除</a>
+                    </td>
+                  </tr>
+                  <%}%>
+                </tbody>
+              </table>
+        </div>
+    </body>
+    <% include inc/footerlink.ejs %>
+</html>

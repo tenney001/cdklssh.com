@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <% include inc/meta.ejs %>
+
+        <title><%= title %></title>
+
+        <% include inc/headerlink.ejs %>
+    </head>
+    <body>
+        <% include inc/nav.ejs %>
+        
+        <div class="container">
+            <a class="btn btn-primary" href="/admin/product/add">添加产品</a>
+
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>产品名称</th>
+                    <th style="min-width:100px">产品分类</th>
+                    <th>产品描述</th>
+                    <th style="min-width:100px">添加时间</th>
+                    <th style="min-width:100px">修改时间</th>
+                    <th style="min-width:100px">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% for (item in products){ %>
+                      <tr>
+                        <td><%= products[item].name %></td>
+                        <td><%= products[item].productType.name %></td>
+                        <td><%= products[item].describe %></td>
+                        <td><%= moment(products[item].meta.createAt) %></td>
+                        <td><%= moment(products[item].meta.updateAt) %></td>
+                        <td>
+                            <a href="/admin/product/update/<%=products[item]._id%>" class="btn btn-warning btn-xs">修改</a>
+                            <a href="/admin/product/del/<%=products[item]._id%>" class="btn btn-danger btn-xs" onclick="if(!confirm('确认要删除？')){return false;}">删除</a>
+                        </td>
+                      </tr>
+                    <%}%>
+                </tbody>
+              </table>
+        </div>
+
+        
+    </body>
+    <% include inc/footerlink.ejs %>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <% include inc/meta.ejs %>
+
+        <title><%= title %></title>
+
+        <% include inc/headerlink.ejs %>
+
+    </head>
+    <body>
+        <% include inc/nav.ejs %>
+
+        <div class="container">
+            <form class="form-horizontal" method="post">
+              <div class="form-group">
+                <label for="inputTitle" class="col-sm-2 control-label">产品名称</label>
+                <div class="col-sm-10">
+                  <input name="prdid" type="hidden" value="<%= product._id %>" />
+                  <input type="text" name="name" class="form-control" id="inputTitle"  value="<%= product.name %>" placeholder='产品名称'>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputDescribe" class="col-sm-2 control-label">产品类型</label>
+                <div class="col-sm-10">
+                  <!-- Single button -->
+                  <div class="btn-group">
+                    <input id="productType" name="productType" type="hidden" value="<%= product.productType._id%>">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-typeid=''>
+                      <strong><%= product.productType.name%></strong> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <% for(o in prdTypes ){%>
+                        <li><a href="#"  data-typeid="<%=prdTypes[o]._id%>"><%= prdTypes[o].name %></a></li>
+                      <% } %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputDescribe" class="col-sm-2 control-label">简要描述</label>
+                <div class="col-sm-10">
+                  <input type="text" name="describe" class="form-control" id="inputDescribe" placeholder="简要描述" value="<%= product.describe %>">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="editor" class="col-sm-2 control-label">产品内容</label>
+                <div class="col-sm-10">
+                  <input id="content"  type="hidden" name="content" />
+                  <script id="editor" type="text/plain" style="width:100%;height:300px;"></script>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-default">提交</button>
+                  <button type="button" class="btn btn-danger" onclick="window.history.go(-1)">返回</button>
+                </div>
+              </div>
+            </form>
+            
+        </div>
+    </body>
+    <% include inc/footerlink.ejs %>
+    <script type="text/javascript" charset="utf-8" src="/libs/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/libs/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/libs/ueditor/lang/zh-cn/zh-cn.js"> </script>
+    
+    <script type="text/javascript">
+      
+      //实例化编辑器
+      //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+      var ue = UE.getEditor('editor');
+      ue.addListener( 'ready', function( editor ) {
+        ue.setContent('<%- product.content%>');
+      });
+      ue.addListener('contentChange',function (e) {
+        $("#content").val(ue.getContent());
+      });
+        
+
+      $(function () {
+        $('.dropdown-menu li a').on('click',function () {
+          var prdTypeId = $(this).data('typeid');
+          var prdTypeName = $(this).text();
+          $(this)
+            .parents('.btn-group')
+            .children('button.dropdown-toggle')
+            // .data('typeid',prdTypeId)
+            .children('strong')
+            .text(prdTypeName)
+          $("#productType").val(prdTypeId);
+        })
+      })
+    </script>
+</html>
