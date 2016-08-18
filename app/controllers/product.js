@@ -45,14 +45,14 @@ exports.prdTypeAdd = function (req,res,next) {
                 if(err){
                     console.log('ProductType.find err.',err);
                 }
-                console.log('find data:',data);
+                // console.log('find data:',data);
                 if(!data){
                     var prdObj = new ProductType({name:name});
                     prdObj.save(function (err,data) {
                         if(err){
                             console.log('ProductType.save err.',err);
                         }
-                        console.log('save data:',data);
+                        // console.log('save data:',data);
                         if(data){
                             res.redirect('/admin/prdType');
                         }

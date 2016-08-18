@@ -14,10 +14,14 @@ router.use(function (req,res,next) {
     res.locals.setCurrentNav = function (url) {
         var _path = req.path;
         var result = '';
-        if(_path.indexOf(url) >-1){
-            result = 'current';
+        // console.log('_path:',_path);
+        // console.log('url:',url);
+
+        if(_path.indexOf(url) > -1 && url!="/"){
+            result = 'active';
+        }else if(_path == url && _path=="/"){
+            result = 'active';
         }
-        // console.log('result:',result);
         return result;
     }
     next();
@@ -25,6 +29,15 @@ router.use(function (req,res,next) {
 
 /* GET home page. */
 router.get('/', IndexController.index);
+
+// about page.
+router.get('/about', IndexController.about);
+
+// products page.
+router.get('/products', IndexController.products);
+
+// contact page.
+router.get('/contact', IndexController.contact);
 
 
 module.exports = router;
