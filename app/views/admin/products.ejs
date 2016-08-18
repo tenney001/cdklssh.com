@@ -16,6 +16,7 @@
             <table class="table table-striped">
                 <thead>
                   <tr>
+                    <th style="min-width:100px">产品主图</th>
                     <th>产品名称</th>
                     <th style="min-width:100px">产品分类</th>
                     <th>产品描述</th>
@@ -27,6 +28,11 @@
                 <tbody>
                     <% for (item in products){ %>
                       <tr>
+                        <td>
+                            <a title="点击查看大图" href="<%= products[item].photoUrl %>" target='_blank'>
+                                <img src="<%= products[item].photoUrl %>" style="width:50px; height:50px;" />
+                            </a>
+                        </td>
                         <td><%= products[item].name %></td>
                         <td><%= products[item].productType.name %></td>
                         <td><%= products[item].describe %></td>

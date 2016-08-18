@@ -1,20 +1,16 @@
 var express = require('express');
+var upload = require('../../Utils/multerUtil');
 var router = express.Router();
 var Product = require('../controllers/product');
 var Login = require('../controllers/login');
 
 router.use(function (req,res,next) {
     res.locals.setNavActive = function (url) {
-        // console.log('url:',url);
-        // console.log('host:',req.host);
-        // console.log('path:','/admin'+req.path);
         var _path = '/admin'+req.path;
-        // console.log('indexOf:',_path.indexOf(url));
         var result = '';
         if(_path.indexOf(url) >-1){
             result = 'active';
         }
-        // console.log('result:',result);
         return result;
     }
     // 判断登录
@@ -66,13 +62,13 @@ router.get('/product', Product.products);
 router.get('/product/add', Product.productAddPage);
 
 // product add post
-router.post('/product/add', Product.productAdd);
+router.post('/product/add',upload.single('photo'), Product.productAdd);
 
 // product update page
 router.get('/product/update/:id',Product.productUpdatePage);
 
 // product update post
-router.post('/product/update/:id',Product.productUpdate);
+router.post('/product/update/:id',upload.single('photo'),Product.productUpdate);
 
 // product delete get
 router.get('/product/del/:id',Product.productDel);

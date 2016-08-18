@@ -10,6 +10,8 @@ var ProductSchema = new Schema({
         type:ObjectId,
         ref:'ProductType'
     },
+    photoName:String,
+    photoUrl:String,
     describe:String,
     content:String,
     meta: {

@@ -175,8 +175,10 @@ exports.productAdd = function (req,res,next) {
         describe:req.body.describe,
         content:req.body.content
     };
-    console.log('prdObj:',prdObj);
-    if(!prdObj.name || prdObj.name.length==0){
+    if(!req.file || req.file.path.length==0){
+        res.status(400);
+        res.send('产品主图不能为空');
+    }else if(!prdObj.name || prdObj.name.length==0){
         res.status(400);
         res.send('产品名称不能为空');
     }else if(!prdObj.productType || prdObj.productType.length==0){
@@ -189,6 +191,9 @@ exports.productAdd = function (req,res,next) {
         res.status(400);
         res.send('产品内容不能为空');
     }else{
+        prdObj.photoName = req.file.originalname;
+        prdObj.photoUrl = req.file.path.split('public')[1];
+
         var _prdObj = new Product(prdObj);
         _prdObj.save(function (err,data) {
             if(err){
@@ -198,7 +203,6 @@ exports.productAdd = function (req,res,next) {
             }
         })
     }
-
 }
 // 产品更新页面
 exports.productUpdatePage = function (req,res,next) {
@@ -244,6 +248,13 @@ exports.productUpdate = function (req,res,next) {
             describe:req.body.describe,
             content:req.body.content
         };
+        if(req.file && req.file.path.length>0){
+            prdObj.photoName = req.file.originalname;
+            prdObj.photoUrl = req.file.path.split('public')[1];
+        }else{
+            prdObj.photoName = req.body.photoName;
+            prdObj.photoUrl = req.body.photoUrl;
+        }
         var _prdObj;
         console.log('prdObj:',prdObj);
         Product
