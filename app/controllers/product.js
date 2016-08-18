@@ -123,15 +123,26 @@ exports.prdTypeDel = function (req,res,next) {
     var id = req.params.id;
     // console.log('id:',id);
     if(id && id.length>0){
-        ProductType
-            .remove({_id:id})
+        Product
+            .find({productType:id})
             .exec(function (err,data) {
                 if(err){
-                    console.log('ProductType.findOne err.',err);
-                }else {
-                    res.redirect('/admin/prdType');
+                    console.log('Product.find err.',err);
+                }else if(data && data.length==0){
+                    ProductType
+                        .remove({_id:id})
+                        .exec(function (err,data) {
+                            if(err){
+                                console.log('ProductType.findOne err.',err);
+                            }else {
+                                res.redirect('/admin/prdType');
+                            }
+                        })
+                }else{
+                    res.send('该分类下还有产品，不允许删除');
                 }
             })
+        
     }
 }
 
