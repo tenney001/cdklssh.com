@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <% include inc/header.ejs %>
+    </head>
+    
+    <body>
+        <!-- NAVIGATION -->
+        <% include inc/nav.ejs %>
+
+        
+        <!-- ELEMENTS -->
+        <section>
+            <div class="page-header">
+                <div class="container" style="max-width: 1170px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>产品服务</h1>
+                            <p>Product & Service</p>
+                        </div>
+                    </div>  
+                </div>  
+            </div>  
+            <div class="elements">
+            <div class="container productDetailContainer" style="max-width: 1170px;">
+                <h3 class="center-block" style="margin:20px;"><%= obj.name %></h3>
+                <div class="row center-block">
+                    <span class="text-muted">更新日期：<%= moment(obj.meta.updateAt) %></span>
+                </div>
+                <div class="detail">
+                    <%- obj.content %>
+                </div>
+            </div><!-- //container -->
+            </div>  
+        </section>
+        <!-- END SINGLE -->
+        
+        <!-- BOTTOM FOOTER -->
+        <% include inc/footer.ejs %>
+        <!-- END BOTTOM FOOTER -->
+        
+        <!-- ALL JAVASCRIPT -->         
+        <script src="/js/jquery.js"></script>
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+       
+    </body>
+</html>

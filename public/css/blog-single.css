@@ -141,3 +141,27 @@
 	margin-bottom: 20px;
 	text-transform: capitalize;
 }
+
+
+
+
+/*add contact_01*/
+.contact{
+
+}
+.contact ul,.contact li{
+	list-style-type: none;
+	padding: 0;
+}
+
+.productDetailContainer .center-block{ text-align: center; }
+.productDetailContainer .detail{
+	margin: 50px 20px;
+}
+.products li.active a{
+	color: #fff;
+}
+.products .center-block{ text-align: center; }
+
+
+a.text-white{ color: #fff; }

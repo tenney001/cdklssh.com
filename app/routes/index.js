@@ -13,7 +13,10 @@ router.use(function (req,res,next) {
     }
     res.locals.setCurrentNav = function (url) {
         var _path = req.path;
+        var _query = req.query;
         var result = '';
+
+        _path = _query.prdType ? _path+'?prdType='+_query.prdType : _path;
         // console.log('_path:',_path);
         // console.log('url:',url);
 
@@ -35,6 +38,9 @@ router.get('/about', IndexController.about);
 
 // products page.
 router.get('/products', IndexController.products);
+
+// products detail page.
+router.get('/products/:id', IndexController.productDetail);
 
 // contact page.
 router.get('/contact', IndexController.contact);
