@@ -162,6 +162,9 @@
 	color: #fff;
 }
 .products .center-block{ text-align: center; }
+.products .item{
+	min-height: 180px;
+}
 
 
 a.text-white{ color: #fff; }
