@@ -158,6 +158,14 @@
 .productDetailContainer .detail{
 	margin: 50px 20px;
 }
+
+@media screen and (max-width: 640px) {
+    .productDetailContainer .detail img{
+    	width: 100%!important;
+    }
+}
+
+
 .products li.active a{
 	color: #fff;
 }
