@@ -383,10 +383,10 @@ p{
 /* HOME */
 .home{
 	position: relative;
-	background: url('../images/carousel-bg-1.jpg') scroll no-repeat top right;
+	/*background: url('../images/carousel-bg-1.jpg') scroll no-repeat top right;*/
 	background-size: cover;
 	min-height: 650px;
-	padding: 10rem 0;
+	padding: 3rem 0;
 }
 
 .home .carousel-inner {

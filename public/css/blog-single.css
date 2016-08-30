@@ -176,3 +176,14 @@
 
 
 a.text-white{ color: #fff; }
+
+
+.mymenu a.navbar-brand{
+	width: 200px;
+}
+
+
+.mycontact li{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
