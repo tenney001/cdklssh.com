@@ -385,8 +385,8 @@ p{
 	position: relative;
 	/*background: url('../images/carousel-bg-1.jpg') scroll no-repeat top right;*/
 	background-size: cover;
-	min-height: 650px;
-	padding: 3rem 0;
+	/*min-height: 650px;*/
+	padding: 1rem 0;
 }
 
 .home .carousel-inner {
