@@ -14,7 +14,7 @@ exports.index = function(req,res,next) {
             if(err){
                 console.log('Product.find err.',err);
             }
-            console.log('list:',data);
+            // console.log('list:',data);
             res.render('index',{
                 title:'首页',
                 list:data
