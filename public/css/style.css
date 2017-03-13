@@ -1,14 +1,14 @@
 /* google font*/
-@import url(http://fonts.useso.com/css?family=Slabo+27px|Gudea|Alegreya+Sans);
+/*@import url(http://fonts.useso.com/css?family=Slabo+27px|Gudea|Alegreya+Sans);*/
 
 body{
 	overflow-x: hidden;
-	font-family: 'Gudea', sans-serif;
+	font-family: 'Gudea', sans-serif,'微软雅黑';
 	font-size: 15px;
 	color: #333333;
 }
 h1, h2, h3, h4, h5{
-	font-family: 'Slabo 27px', serif;
+	font-family: 'Slabo 27px', serif,'微软雅黑';
 
 	color: #333333;
 }
@@ -222,7 +222,7 @@ p{
 	font-size: 29px;
 	padding: 0; 
 	margin: 0 !important;
-	font-family: 'Slabo 27px', serif;
+	font-family: 'Slabo 27px', serif,'微软雅黑';
 	margin-left: 10px;
 	font-weight: bold;
 	letter-spacing: 1px;
@@ -249,7 +249,7 @@ p{
 	padding: 5px 15px;
 	letter-spacing: 0.5px;
 	text-transform: uppercase;
-	font-family: 'Slabo 27px', serif;
+	font-family: 'Slabo 27px', serif,'微软雅黑';
 }
 
 .menu .navbar-nav > li.active > a:hover,
